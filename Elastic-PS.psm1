@@ -10,7 +10,7 @@ function Set-KibanaIP($url){
 
 #Set the elastic url and port on the script scope
 #url should contain the full URL
-#EX: https://10.0.8.32:5601
+#EX: https://10.0.8.32:9200
 function Set-ElasticIP($url){
     $script:ELASTIC = $url
 }
@@ -55,7 +55,6 @@ function Set-Role($name){
     $headers = @{"kbn-xsrf"='true';}
 
     #The request (hash tables fucked itself)
-    #NOTE: this creates a makes it so each user can only see ONE index that is specified to THEM
     $body = "
     {
     `"metadata`" : {
@@ -146,9 +145,6 @@ function Remove-DataView($name){
     $headers = @{"kbn-xsrf"='true';}
 
     Invoke-WebRequest -SkipCertificateCheck -Uri $KIBANA/s/$name/api/data_views/data_view/$name `
-    -Method Delete -Headers $headers -Authentication Basic -Credential $CREDS
-
-    Invoke-WebRequest -SkipCertificateCheck -Uri $KIBANA/s/$name/api/data_views/data_view/winlogbeat-$name-index `
     -Method Delete -Headers $headers -Authentication Basic -Credential $CREDS
     
 }
