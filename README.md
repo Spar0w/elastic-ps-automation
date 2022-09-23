@@ -70,6 +70,16 @@ This function will create a new role. To configure the specific settings in here
 Right now, the permissions set in this role allow it to read the Data Views in the "names" key. This theoretically should 
 be a hash table, but I guess the body is too large for that to be, so it is instead just JSON. 
 
+EX
+```powershell
+Set-Role "role"
+```
+
 ### Remove-Role
 Does what it says. DELETEs the specific role in Kibana
+
+```powershell
+Remove-Role "role"
+```
+
 
