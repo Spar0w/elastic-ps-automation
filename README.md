@@ -1,2 +1,2 @@
 # elastic-ps-automation
-A set of functions for automating an Elastic Stack Deployment
+A set of functions for automating Kibana settings
